@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Features - Campus Events</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #2e0050, #4c0080);
+      color: white;
+    }
+
+    header {
+      background-color: rgba(255 255 255 / 0.15);
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    header .logo-section img {
+      width: 32px;
+      height: 32px;
+    }
+
+    header nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    header nav a {
+      text-decoration: none;
+      color: whitesmoke;
+      padding: 0.5rem;
+    }
+
+    header nav a:hover {
+      color: #78c7d7;
+    }
+
+    .header-actions a {
+      margin-left: 0.5rem;
+      padding: 0.6em 1.2em;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .btn-outline {
+      color: white;
+      border: 1px solid #78c7d7;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #b14fff 0%, #7e35ff 100%);
+      color: white;
+    }
+
+    main {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1, h2, h3 {
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .features-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .feature-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 30px 20px;
+      text-align: center;
+      width: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .feature-card .icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 20px auto;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      background: linear-gradient(to bottom right, #7e35ff, #b14fff);
+    }
+
+    .feature-card p {
+      color: #ccc;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    footer {
+      background: linear-gradient(to right, #4a0d83, #1a0145);
+      padding: 3rem 2rem;
+      color: #f2f2f2;
+      margin-top: 4rem;
+    }
+
+    footer .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    footer .footer-brand, footer .footer-links {
+      flex: 1 1 250px;
+    }
+
+    footer .footer-links .link-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    footer .footer-links .link-column ul li a {
+      text-decoration: none;
+      color: #a7a7a7;
+    }
+
+    footer .footer-links .link-column ul li a:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 900px) {
+      .features-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-section">
+    <img src="images/logo.png" alt="Campus Vibe Logo">
+    <h1>Campus Vibe</h1>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="main.html">Home</a></li>
+      <li><a href="features.html" class="active">Features</a></li>
+      <li><a href="about-us.html" class="nav-link">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="header-actions">
+    <a href="sign-in.html" class="btn btn-outline">Sign In</a>
+    <a href="main.html#getstarted" class="btn btn-primary">Get Started</a>
+  </div>
+</header>
+
+<main>
+  <h1>Platform Features</h1>
+  <div class="features-container">
+    <div class="feature-card">
+      <div class="icon">📅</div>
+      <h3>AI-Powered Planning</h3>
+      <p>Smart event suggestions and automated scheduling that adapts to your campus culture.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">📈</div>
+      <h3>Analytics Dashboard</h3>
+      <p>Track event performance, engagement metrics, and grow your campus influence.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">🤝</div>
+      <h3>Social Integration</h3>
+      <p>Connect with friends, share events, and build lasting campus communities effortlessly.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">🔔</div>
+      <h3>Real-time Notifications</h3>
+      <p>Keep students informed and engaged with instant alerts about upcoming events.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">🎯</div>
+      <h3>Smart Recommendations</h3>
+      <p>Receive personalized event suggestions based on user interests and past activity.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">💡</div>
+      <h3>Interactive 3D Previews</h3>
+      <p>Visualize events with immersive 3D previews to plan more effectively.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h2>Campus Vibe</h2>
+      <p>Empowering universities worldwide to create extraordinary campus experiences through innovative event management technology.</p>
+    </div>
+    <div class="footer-links">
+      <div class="link-column">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="main.html" class="nav-link">Home</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

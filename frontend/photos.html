@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus‑Vibe | Photos</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    /* NAVBAR */
+    header {
+      width: 100%;
+      padding: 15px 0;
+      background: rgba(20, 20, 30, 0.95);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    nav a.active { color: #b14fff; }
+
+    .header {
+      text-align: center;
+      padding: 40px 20px;
+      padding-top: 110px;
+      background: linear-gradient(135deg, #2e0050, #4c0080);
+      color: white;
+    }
+
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      width: 90%;
+      margin: auto;
+    }
+
+    .photo-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .photo-content {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .photo-content h3 {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .explore-btn {
+      padding: 10px 18px;
+      background: linear-gradient(90deg, #b14fff 0%, #7e35ff 100%);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+
+    .explore-btn:hover {
+      filter: brightness(1.1);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      background: #222;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav>
+      <a href="main.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="photos.html" class="active">Photos</a>
+      <a href="about-us.html" class="nav-link">About Us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <div class="header">
+    <h1>Event Photos</h1>
+    <p>Explore memories from previous college events</p>
+  </div>
+
+  <!-- Photo Gallery -->
+  <div class="gallery-container">
+
+    <div class="photo-card">
+      <img src="images/event1.jpg" alt="Event 1" />
+      <div class="photo-content">
+        <h3>Annual Tech Fest 2024</h3>
+        <button class="explore-btn" onclick="exploreEvent('event1')">Explore</button>
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <img src="images/event2.jpg" alt="Event 2" />
+      <div class="photo-content">
+        <h3>Cultural Night 2024</h3>
+        <button class="explore-btn" onclick="exploreEvent('event2')">Explore</button>
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <img src="images/event3.jpg" alt="Event 3" />
+      <div class="photo-content">
+        <h3>Sports Meet 2023</h3>
+        <button class="explore-btn" onclick="exploreEvent('event3')">Explore</button>
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <img src="images/event4.jpg" alt="Event 4" />
+      <div class="photo-content">
+        <h3>Freshers Welcome 2024</h3>
+        <button class="explore-btn" onclick="exploreEvent('event4')">Explore</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>© 2025 Campus‑Vibe | All Rights Reserved</p>
+  </div>
+
+  <script>
+    function exploreEvent(eventId) {
+      window.location.href = `event-details.html?event=${eventId}`;
+    }
+  </script>
+
+</body>
+</html>
