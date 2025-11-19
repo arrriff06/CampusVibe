@@ -856,3 +856,20 @@ h1 .highlight {
 .participate-btn:hover {
   background: #8b1ddc;
 }
+ /* ==== LOGOUT BUTTON FIX ==== */
+#logoutBtn {
+  background: #8a2be2 !important;   /* Violet */
+  color: #ffffff !important;
+  border: 1px solid #ab6ffc !important;
+  box-shadow: 0 0 12px #8a2be2;
+  opacity: 1 !important;
+  padding: 0.6em 1.2em;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* Hover */
+#logoutBtn:hover {
+  background: #9b4dff !important;
+  box-shadow: 0 0 18px #ab6ffc;
+}

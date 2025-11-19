@@ -143,25 +143,28 @@
     <form id="participationForm">
 
       <label>Full Name</label>
-      <input type="text" placeholder="Enter your full name" required />
+      <input type="text" name="name" placeholder="Enter your full name" required />
 
       <label>University Email</label>
-      <input type="email" placeholder="Enter your email" required />
+      <input type="email" name="email" placeholder="Enter your email" required />
 
       <label>Select Event</label>
-      <select required>
+      <select name="eventId" required>
         <option value="" disabled selected>Choose an event</option>
-        <option>Annual Tech Fest</option>
-        <option>Cultural Night</option>
-        <option>Sports Meet</option>
-        <option>Workshop / Seminar</option>
+        <option value="event1">Annual Tech Fest</option>
+        <option value="event2">Cultural Night</option>
+        <option value="event3">Sports Meet</option>
+        <option value="event4">Workshop / Seminar</option>
       </select>
 
-      <label>Department</label>
-      <input type="text" placeholder="e.g., Computer Science" required />
+      <label>Student Code</label>
+      <input type="text" name="studentCode" placeholder="e.g., BWU/BCA/536" required />
+
+      <label>Phone Number</label>
+      <input type="text" name="phone" placeholder="Enter your phone number" />
 
       <label>What skills do you have? (Optional)</label>
-      <textarea placeholder="Tell us about your talent..."></textarea>
+      <textarea name="remarks" placeholder="Tell us about your talent..."></textarea>
 
       <button class="submit-btn" type="submit">Submit Registration</button>
 
@@ -173,11 +176,40 @@
     <p>© 2025 Campus Vibe | All Rights Reserved</p>
   </div>
 
+  <!-- JS: Submit form to backend -->
+   <script src="participation.js"></script>
   <script>
-    document.getElementById("participationForm").addEventListener("submit", function(e) {
+    document.getElementById("participationForm").addEventListener("submit", async function(e) {
       e.preventDefault();
-      alert("Your participation is submitted!");
-      window.location.href = "main.html";
+
+      const form = e.target;
+      const formData = {
+        eventId: form.eventId.value,
+        name: form.name.value,
+        email: form.email.value,
+        studentCode: form.studentCode.value,
+        phone: form.phone.value,
+        remarks: form.remarks.value
+      };
+
+      try {
+        const res = await fetch('/api/participation', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        const data = await res.json();
+        if (data.success) {
+          alert("Your participation is submitted successfully!");
+          form.reset(); // clear form
+        } else {
+          alert("Error: " + (data.message || "Unable to submit"));
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Server error: Unable to submit participation");
+      }
     });
   </script>
 

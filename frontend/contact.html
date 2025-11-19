@@ -113,8 +113,9 @@ body {
 
   <script>
 function closeModal() {
-  document.querySelector('.modal-overlay').style.display = 'none';
+  window.location.href = "main.html";  // or index.html (your home page)
 }
+
 
 document.getElementById('contactForm').addEventListener('submit', function(e) {
   e.preventDefault();
