@@ -1,9 +1,17 @@
 // frontend/js/participation.js
 
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("participationForm");
+  // 🔐 Check login first
+  const token = localStorage.getItem("token");
 
-  if (!form) return; // Exit if form doesn't exist on the page
+  if (!token) {
+    alert("You must log in first to participate in events!");
+    window.location.href = "sign-in.html";
+    return;
+  }
+
+  const form = document.getElementById("participationForm");
+  if (!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -17,16 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
       remarks: form.remarks.value
     };
 
-    // Basic front-end validation
-    if (!formData.eventId || !formData.name || !formData.email || !formData.studentCode) {
-      alert("Please fill in all required fields.");
-      return;
-    }
-
     try {
       const response = await fetch("/api/participation", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + token  // <-- send token to backend
+        },
         body: JSON.stringify(formData)
       });
 
@@ -34,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (data.success) {
         alert("Your participation has been submitted successfully!");
-        form.reset(); // Clear form after success
+        form.reset();
       } else {
         alert("Error: " + (data.message || "Unable to submit participation."));
       }
