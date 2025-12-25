@@ -1,11 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../middleware/auth');
-const upload = require('../middleware/upload');
-const { createEvent, listEvents, getEvent } = require('../controllers/eventsController');
 
-router.get('/', listEvents);
-router.get('/:id', getEvent);
-router.post('/', auth, upload.single('banner'), createEvent); // protected: create event with banner image
+const auth = require('../middleware/auth');
+const adminOnly = require('../middleware/admin');
+
+const {
+  createEvent,
+  getEvents,
+  deleteEvent
+} = require('../controllers/eventController');
+
+// PUBLIC – users can view events
+router.get('/', getEvents);
+
+// ADMIN ONLY – create event
+router.post('/', auth, adminOnly, createEvent);
+
+// ADMIN ONLY – delete event
+router.delete('/:id', auth, adminOnly, deleteEvent);
 
 module.exports = router;

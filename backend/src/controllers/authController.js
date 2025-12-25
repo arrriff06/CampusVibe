@@ -19,15 +19,27 @@ exports.register = async (req, res) => {
 
     const hashed = await bcrypt.hash(password, SALT_ROUNDS);
 
-    const user = await User.create({ name, email, password: hashed });
+   const user = await User.create({
+  name,
+  email,
+  password: hashed,
+  role: email === "admin@campusvibe.com" ? "admin" : "user"
+});
+
+
 
     console.log("USER INSERTED IN DB:", user);
 
     const token = jwt.sign(
-      { id: user._id, email: user.email },
-      JWT_SECRET,
-      { expiresIn: JWT_EXPIRES_IN }
-    );
+  {
+    id: user._id,
+    email: user.email,
+    role: user.role
+  },
+  JWT_SECRET,
+  { expiresIn: JWT_EXPIRES_IN }
+);
+
 
     return res.json({
       message: 'User registered',
@@ -54,15 +66,26 @@ exports.login = async (req, res) => {
     const valid = await bcrypt.compare(password, user.password);
     if (!valid) return res.status(400).json({ error: 'Invalid credentials.' });
 
-    const token = jwt.sign(
-      { id: user._id, email: user.email },
-      JWT_SECRET,
-      { expiresIn: JWT_EXPIRES_IN }
-    );
+   const token = jwt.sign(
+  {
+    id: user._id,
+    email: user.email,
+    role: user.role
+  },
+  JWT_SECRET,
+  { expiresIn: JWT_EXPIRES_IN }
+);
+
 
     return res.json({
       message: 'Logged in',
-      user: { id: user._id, name: user.name, email: user.email },
+      user: {
+  id: user._id,
+  name: user.name,
+  email: user.email,
+  role: user.role
+},
+
       token
     });
   } catch (err) {
@@ -70,3 +93,4 @@ exports.login = async (req, res) => {
     return res.status(500).json({ error: 'Server error' });
   }
 };
+
