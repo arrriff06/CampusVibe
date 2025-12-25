@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (data.user.role === "admin") {
         window.location.href = "admin-dashboard.html";
       } else {
-        window.location.href = "main.html";
+        window.location.href = "index.html";
       }
 
     } catch (err) {
