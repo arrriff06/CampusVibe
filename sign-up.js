@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             try {
-                const res = await fetch("https://campusvibe-backend.onrender.com/api/auth/login", {
+                const res = await fetch("https://campusvibe-8s7a.onrender.com/api/auth/register", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ name: fullname, email, password })
