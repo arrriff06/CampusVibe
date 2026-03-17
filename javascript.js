@@ -1,5 +1,12 @@
-// ============================================
-// Highlight active navbar links on scroll
+document.addEventListener('DOMContentLoaded', () => {
+  const currentPage = window.location.pathname.split("/").pop();
+
+  document.querySelectorAll(".nav-link").forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+});
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.nav-link');
@@ -8,18 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const fromTop = window.scrollY + 100;
 
     navLinks.forEach(link => {
-      const section = document.querySelector(link.hash);
-      if (!section) return;
+  if (!link.hash) return; // ✅ FIX: prevent empty selector error
 
-      if (
-        section.offsetTop <= fromTop &&
-        section.offsetTop + section.offsetHeight > fromTop
-      ) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
-    });
+  const section = document.querySelector(link.hash);
+  if (!section) return;
+
+  if (
+    section.offsetTop <= fromTop &&
+    section.offsetTop + section.offsetHeight > fromTop
+  ) {
+    link.classList.add('active');
+  } else {
+    link.classList.remove('active');
+  }
+});
   }
 
   window.addEventListener('scroll', setActiveLink);
